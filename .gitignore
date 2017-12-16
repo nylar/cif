@@ -1,0 +1,15 @@
+.dub
+dub.selections.json
+docs.json
+__dummy.html
+docs/
+cif.so
+cif.dylib
+cif.dll
+cif.a
+cif.lib
+cif-test-*
+*.exe
+*.o
+*.obj
+*.lst

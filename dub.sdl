@@ -1,0 +1,6 @@
+name "cif"
+description "A CIF parser"
+authors "Scott Raine"
+copyright "Copyright © 2017, Scott Raine"
+license "MIT"
+targetType "library"
