@@ -4,14 +4,8 @@ import std.conv : to;
 import std.datetime.date : Date, DayOfWeek;
 import std.string : strip;
 
+import cif.types : TransactionType;
 import cif.utils : daysRunning, twoToFourYear;
-
-enum TransactionType : char
-{
-    new_ = 'N',
-    delete_ = 'D',
-    revise = 'R',
-}
 
 struct BasicSchedule
 {

@@ -4,13 +4,8 @@ import std.datetime.date : Date, DateTime;
 import std.conv : to;
 import std.string : strip;
 
+import cif.types : UpdateType;
 import cif.utils : twoToFourYear;
-
-enum UpdateType : char
-{
-    update = 'U',
-    full = 'F',
-}
 
 struct Header
 {

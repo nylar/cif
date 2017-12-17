@@ -3,11 +3,7 @@ module cif.notes;
 import std.conv : to;
 import std.string : strip;
 
-enum NoteType : char
-{
-    GBTT = 'G',
-    WTT = 'W',
-}
+import cif.types : NoteType;
 
 struct TrainNote
 {
