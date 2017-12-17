@@ -2,6 +2,7 @@ module cif;
 
 public
 {
+    import cif.association;
     import cif.basicschedule;
     import cif.header;
     import cif.location;

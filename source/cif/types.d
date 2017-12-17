@@ -1,5 +1,11 @@
 module cif.types;
 
+enum AssociationType : char
+{
+    passengerUse = 'P',
+    operatingUseOnly = 'O',
+}
+
 enum NoteType : char
 {
     GBTT = 'G',
