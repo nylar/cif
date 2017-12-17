@@ -6,23 +6,6 @@ import std.string : strip;
 
 import cif.utils : twoToFourYear;
 
-private nothrow @safe pure UpdateType fromChar(char updateType)
-{
-    final switch (updateType)
-    {
-    case 'U':
-        return UpdateType.update;
-    case 'F':
-        return UpdateType.full;
-    }
-}
-
-unittest
-{
-    assert(fromChar('U') == UpdateType.update);
-    assert(fromChar('F') == UpdateType.full);
-}
-
 enum UpdateType : char
 {
     update = 'U',
@@ -48,7 +31,7 @@ struct Header
                 to!int(line[28 .. 30]), to!int(line[30 .. 32]));
         this.currentFileReference = line[32 .. 39];
         this.lastFileReference = strip(line[39 .. 46]);
-        this.updateType = fromChar(line[46]);
+        this.updateType = to!UpdateType(line[46]);
         this.softwareVersion = line[47];
         this.extractStart = Date(twoToFourYear(to!int(line[52 .. 54])),
                 to!int(line[50 .. 52]), to!int(line[48 .. 50]));

@@ -1,28 +1,12 @@
 module cif.notes;
 
+import std.conv : to;
 import std.string : strip;
 
 enum NoteType : char
 {
     GBTT = 'G',
     WTT = 'W',
-}
-
-private NoteType fromChar(char note)
-{
-    final switch (note)
-    {
-    case 'G':
-        return NoteType.GBTT;
-    case 'W':
-        return NoteType.WTT;
-    }
-}
-
-unittest
-{
-    assert(fromChar('G') == NoteType.GBTT);
-    assert(fromChar('W') == NoteType.WTT);
 }
 
 struct TrainNote
@@ -32,7 +16,7 @@ struct TrainNote
 
     this(string record)
     {
-        this.type = fromChar(record[2]);
+        this.type = to!NoteType(record[2]);
         this.note = strip(record[3 .. $]);
     }
 
@@ -53,7 +37,7 @@ struct LocationNote
 
     this(string record)
     {
-        this.type = fromChar(record[2]);
+        this.type = to!NoteType(record[2]);
         this.note = strip(record[3 .. $]);
     }
 

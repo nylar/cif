@@ -8,29 +8,9 @@ import cif.utils : daysRunning, twoToFourYear;
 
 enum TransactionType : char
 {
-    new_,
-    delete_,
-    revise,
-}
-
-private TransactionType fromChar(char transactionType)
-{
-    final switch (transactionType)
-    {
-    case 'N':
-        return TransactionType.new_;
-    case 'D':
-        return TransactionType.delete_;
-    case 'R':
-        return TransactionType.revise;
-    }
-}
-
-unittest
-{
-    assert(fromChar('N') == TransactionType.new_);
-    assert(fromChar('D') == TransactionType.delete_);
-    assert(fromChar('R') == TransactionType.revise);
+    new_ = 'N',
+    delete_ = 'D',
+    revise = 'R',
 }
 
 struct BasicSchedule
@@ -62,7 +42,7 @@ struct BasicSchedule
 
     this(string line)
     {
-        this.transactionType = fromChar(line[2]);
+        this.transactionType = to!TransactionType(line[2]);
         this.trainUid = line[3 .. 9];
         this.start = Date(twoToFourYear(to!int(line[9 .. 11])),
                 to!int(line[11 .. 13]), to!int(line[13 .. 15]));
