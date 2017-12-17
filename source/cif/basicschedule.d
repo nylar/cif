@@ -34,39 +34,39 @@ struct BasicSchedule
     string serviceBranding;
     char stpIndicator;
 
-    this(string line)
+    this(string record)
     {
-        this.transactionType = to!TransactionType(line[2]);
-        this.trainUid = line[3 .. 9];
-        this.start = Date(twoToFourYear(to!int(line[9 .. 11])),
-                to!int(line[11 .. 13]), to!int(line[13 .. 15]));
-        this.end = Date(twoToFourYear(to!int(line[15 .. 17])),
-                to!int(line[17 .. 19]), to!int(line[19 .. 21]));
-        this.days = daysRunning(line[21 .. 28]);
-        this.bankHolidayRunning = line[28];
-        this.status = line[29];
-        this.category = line[30 .. 32];
-        this.identity = line[32 .. 36];
-        this.headcode = strip(line[36 .. 40]);
-        this.courseIndicator = line[40];
-        this.serviceCode = line[41 .. 49];
-        this.portionId = line[49];
-        this.powerType = line[50 .. 53];
-        this.timingLoad = strip(line[53 .. 57]);
+        this.transactionType = to!TransactionType(record[2]);
+        this.trainUid = record[3 .. 9];
+        this.start = Date(twoToFourYear(to!int(record[9 .. 11])),
+                to!int(record[11 .. 13]), to!int(record[13 .. 15]));
+        this.end = Date(twoToFourYear(to!int(record[15 .. 17])),
+                to!int(record[17 .. 19]), to!int(record[19 .. 21]));
+        this.days = daysRunning(record[21 .. 28]);
+        this.bankHolidayRunning = record[28];
+        this.status = record[29];
+        this.category = record[30 .. 32];
+        this.identity = record[32 .. 36];
+        this.headcode = strip(record[36 .. 40]);
+        this.courseIndicator = record[40];
+        this.serviceCode = record[41 .. 49];
+        this.portionId = record[49];
+        this.powerType = record[50 .. 53];
+        this.timingLoad = strip(record[53 .. 57]);
 
-        if (line[57] != ' ')
+        if (record[57] != ' ')
         {
-            this.speed = to!int(line[57 .. 60]);
+            this.speed = to!int(record[57 .. 60]);
         }
 
-        this.operatingCharacteristics = line[60 .. 66];
-        this.seatingClass = line[66];
-        this.sleepers = line[67];
-        this.reservations = line[68];
-        this.connectionIndicator = line[69];
-        this.cateringCode = strip(line[70 .. 74]);
-        this.serviceBranding = strip(line[74 .. 78]);
-        this.stpIndicator = line[79];
+        this.operatingCharacteristics = record[60 .. 66];
+        this.seatingClass = record[66];
+        this.sleepers = record[67];
+        this.reservations = record[68];
+        this.connectionIndicator = record[69];
+        this.cateringCode = strip(record[70 .. 74]);
+        this.serviceBranding = strip(record[74 .. 78]);
+        this.stpIndicator = record[79];
     }
 
     unittest
@@ -111,20 +111,20 @@ struct BasicScheduleExtra
     string reservationSystemId;
     char dataSource;
 
-    this(string line)
+    this(string record)
     {
-        this.tractionClass = strip(line[2 .. 6]);
-        this.uicClass = strip(line[6 .. 11]);
-        this.atocCode = line[11 .. 13];
-        this.applicableTimetableCode = line[13];
-        this.reservationSystemId = line[14 .. 22];
-        this.dataSource = line[22];
+        this.tractionClass = strip(record[2 .. 6]);
+        this.uicClass = strip(record[6 .. 11]);
+        this.atocCode = record[11 .. 13];
+        this.applicableTimetableCode = record[13];
+        this.reservationSystemId = record[14 .. 22];
+        this.dataSource = record[22];
     }
 
     unittest
     {
-        auto line = "BX         LMYLM503200                                                          ";
-        const BasicScheduleExtra extra = BasicScheduleExtra(line);
+        auto record = "BX         LMYLM503200                                                          ";
+        const BasicScheduleExtra extra = BasicScheduleExtra(record);
 
         assert(extra.tractionClass == "");
         assert(extra.uicClass == "");

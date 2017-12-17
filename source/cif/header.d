@@ -18,20 +18,20 @@ struct Header
     Date extractStart;
     Date extractEnd;
 
-    this(string line)
+    this(string record)
     {
-        this.fileMainframeIdentity = line[2 .. 22];
-        this.extractedOn = DateTime(twoToFourYear(to!int(line[26 .. 28])),
-                to!int(line[24 .. 26]), to!int(line[22 .. 24]),
-                to!int(line[28 .. 30]), to!int(line[30 .. 32]));
-        this.currentFileReference = line[32 .. 39];
-        this.lastFileReference = strip(line[39 .. 46]);
-        this.updateType = to!UpdateType(line[46]);
-        this.softwareVersion = line[47];
-        this.extractStart = Date(twoToFourYear(to!int(line[52 .. 54])),
-                to!int(line[50 .. 52]), to!int(line[48 .. 50]));
-        this.extractEnd = Date(twoToFourYear(to!int(line[58 .. 60])),
-                to!int(line[56 .. 58]), to!int(line[54 .. 56]));
+        this.fileMainframeIdentity = record[2 .. 22];
+        this.extractedOn = DateTime(twoToFourYear(to!int(record[26 .. 28])),
+                to!int(record[24 .. 26]), to!int(record[22 .. 24]),
+                to!int(record[28 .. 30]), to!int(record[30 .. 32]));
+        this.currentFileReference = record[32 .. 39];
+        this.lastFileReference = strip(record[39 .. 46]);
+        this.updateType = to!UpdateType(record[46]);
+        this.softwareVersion = record[47];
+        this.extractStart = Date(twoToFourYear(to!int(record[52 .. 54])),
+                to!int(record[50 .. 52]), to!int(record[48 .. 50]));
+        this.extractEnd = Date(twoToFourYear(to!int(record[58 .. 60])),
+                to!int(record[56 .. 58]), to!int(record[54 .. 56]));
     }
 
     unittest

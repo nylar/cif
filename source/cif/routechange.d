@@ -27,34 +27,34 @@ struct RouteChange
     string uicCode;
     string reservationSystemId;
 
-    this(string line)
+    this(string record)
     {
-        this.location = strip(line[2 .. 9]);
-        this.suffix = line[9];
-        this.category = line[10 .. 12];
-        this.identity = line[12 .. 16];
-        this.headcode = strip(line[16 .. 20]);
-        this.courseIndicator = line[20];
-        this.serviceCode = line[21 .. 29];
-        this.portionId = line[29];
-        this.powerType = line[30 .. 33];
-        this.timingLoad = strip(line[33 .. 37]);
+        this.location = strip(record[2 .. 9]);
+        this.suffix = record[9];
+        this.category = record[10 .. 12];
+        this.identity = record[12 .. 16];
+        this.headcode = strip(record[16 .. 20]);
+        this.courseIndicator = record[20];
+        this.serviceCode = record[21 .. 29];
+        this.portionId = record[29];
+        this.powerType = record[30 .. 33];
+        this.timingLoad = strip(record[33 .. 37]);
 
-        if (line[37] != ' ')
+        if (record[37] != ' ')
         {
-            this.speed = to!int(line[37 .. 40]);
+            this.speed = to!int(record[37 .. 40]);
         }
 
-        this.operatingCharacteristics = line[40 .. 46];
-        this.seatingClass = line[46];
-        this.sleepers = line[47];
-        this.reservations = line[48];
-        this.connectionIndicator = line[49];
-        this.cateringCode = strip(line[50 .. 54]);
-        this.serviceBranding = strip(line[54 .. 58]);
-        this.tractionClass = strip(line[58 .. 62]);
-        this.uicCode = strip(line[62 .. 67]);
-        this.reservationSystemId = strip(line[67 .. 75]);
+        this.operatingCharacteristics = record[40 .. 46];
+        this.seatingClass = record[46];
+        this.sleepers = record[47];
+        this.reservations = record[48];
+        this.connectionIndicator = record[49];
+        this.cateringCode = strip(record[50 .. 54]);
+        this.serviceBranding = strip(record[54 .. 58]);
+        this.tractionClass = strip(record[58 .. 62]);
+        this.uicCode = strip(record[62 .. 67]);
+        this.reservationSystemId = strip(record[67 .. 75]);
     }
 
     unittest
