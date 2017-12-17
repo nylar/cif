@@ -13,3 +13,4 @@ cif-test-*
 *.o
 *.obj
 *.lst
+libcif.a
